@@ -1,0 +1,7 @@
+# Jetbrains project folder
+.idea/
+
+# notebook backup files
+.ipybn_checkpoints/
+
+tutorial.ipynb
