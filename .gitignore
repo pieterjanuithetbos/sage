@@ -2,6 +2,6 @@
 .idea/
 
 # notebook backup files
-.ipynb_checkpoints/
+/.ipynb_checkpoints
 
 /tutorial.ipynb
