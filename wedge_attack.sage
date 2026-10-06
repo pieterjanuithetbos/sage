@@ -28,6 +28,9 @@ def retrieve_kernel(n, q, pk, o, P, x_vec, prune, educational_implementation=Tru
 
     # compute the kernel vector
     time_compute_kernel_start = time.time()
+    print("Type of M before conversion \t", type(M))
+    M = matrix(GF(q), M, sparse=False)
+    print("Type of M after conversion \t", type(M))
     v = M.right_kernel()
     time_compute_kernel_delta = time.time() - time_compute_kernel_start
     timings.append(("compute the kernel of M", time_compute_kernel_delta))
