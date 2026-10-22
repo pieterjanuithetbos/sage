@@ -94,12 +94,12 @@ def generate_M(n, q, p, d, order_string, educational_implementation=True, prune 
     full = set(range(n))
     time_lookup_start = time.time()
     lookup_I = {I: tuple(sorted(full-set(I))) for I in itertools.combinations(range(n), v)}
-    print("Time to calculate the lookup dict: \t \t", time.time() - time_lookup_start)
+    # print("Time to calculate the lookup dict: \t \t", time.time() - time_lookup_start)
     # instead, we use Ran's implementation
     time_idx_rows = time.time()
     idx = {I: i for i, I in enumerate(itertools.combinations(range(n), o))}
     rows = [(J, k) for J in itertools.combinations(range(n), v + 2) for k in range(m)]
-    print("Time to calculate the idx and row dicts \t", time.time() - time_idx_rows)
+    # print("Time to calculate the idx and row dicts \t", time.time() - time_idx_rows)
 
     # prune
     if prune:
@@ -121,7 +121,7 @@ def generate_M(n, q, p, d, order_string, educational_implementation=True, prune 
         for k in comb:
             temp *= x[k]
         col_index_check.append(temp) 
-    print("Time to compute the col_index: \t \t", time.time() - time_col_index_start)
+    # print("Time to compute the col_index: \t \t", time.time() - time_col_index_start)
 
     if educational_implementation:
         # calculate dimensions of resulting matrix
@@ -164,7 +164,7 @@ def generate_M(n, q, p, d, order_string, educational_implementation=True, prune 
 
         # for debugging purposes only: check if result of educational implementation matches built-in function
         M_check_equals_M = (M_check.rref() == M.rref())
-        print(f"Is the result of the educational implementation the same as that of the built-in? {'Yes' if M_check_equals_M else 'No'}")
+        # print(f"Is the result of the educational implementation the same as that of the built-in? {'Yes' if M_check_equals_M else 'No'}")
         # if not M_check_equals_M:
             # print(f"M of educational implementation: \n{M.rref()}")
             # print(f"M of Ran'simplementation: \n{M_check.rref()}")

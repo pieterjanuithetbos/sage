@@ -16,25 +16,25 @@ def retrieve_kernel(n, q, pk, o, P, x_vec, prune, educational_implementation=Tru
     """
     timings = []
 
-    print("prune? \t",  prune)
+    # print("prune? \t",  prune)
     
     # build Macaulay matrix of degree o
     time_generate_M_start = time.time()
     M, row_index, col_index = generate_M(n, q, pk, o, 'deglex', educational_implementation, prune)
     time_generate_M_delta = time.time() - time_generate_M_start 
     timings.append(("generate Macaulay matrix", time_generate_M_delta))
-    print("time to generate Macaulay matrix: \t", time_generate_M_delta)
-    print("M has dimensions: \t", M.nrows(), M.ncols())
+    # print("time to generate Macaulay matrix: \t", time_generate_M_delta)
+    # print("M has dimensions: \t", M.nrows(), M.ncols())
 
     # compute the kernel vector
     time_compute_kernel_start = time.time()
-    print("Type of M before conversion \t", type(M))
+    # print("Type of M before conversion \t", type(M))
     M = matrix(GF(q), M, sparse=False)
-    print("Type of M after conversion \t", type(M))
+    # print("Type of M after conversion \t", type(M))
     v = M.right_kernel()
     time_compute_kernel_delta = time.time() - time_compute_kernel_start
     timings.append(("compute the kernel of M", time_compute_kernel_delta))
-    print("time compute the kernel of M \t \t", time_compute_kernel_delta)
+    # print("time compute the kernel of M \t \t", time_compute_kernel_delta)
     v_vector = v.basis()
 
     dim = v.dimension()
@@ -129,7 +129,7 @@ def wedge_attack(pk, n, q, o, prune, educational_implementation=True, can_print 
     res = build_oil_space(column_index, v, n, o, q, False)
     time_build_oil_space_delta  = time.time() - time_build_oil_space_start
     timings.append(("build the oil space from the kernel", time_build_oil_space_delta))
-    print("time to build the oil space \t \t", time_build_oil_space_delta)
+    # print("time to build the oil space \t \t", time_build_oil_space_delta)
 
     # print statements
     if can_print:
