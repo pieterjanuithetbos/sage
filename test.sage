@@ -23,12 +23,16 @@ def wedge_once(n, m, o, q, prune, educational_implementation, can_print=False):
     timings = []
     time_generate_UOV_variables_start = time.time()
     pk, sk, P, oil, vinegar, O, V, gens_vector = generate_UOV_variables(n, m, o, q)
+    print(f"A basis for the computed oil space is: \n\n{O.rref().apply_map(lambda x: x.to_integer())}")
+    print("---------------"*5)
     time_generate_UOV_variables_delta = time.time() - time_generate_UOV_variables_start
     timings.append(("building a UOV instance", time_generate_UOV_variables_delta))
 
     x_vec = vector(P.gens())
     retrieved_space, kernel_vector, M, dim, timings_wedge_attack = wedge_attack(pk, n, q, o, prune, educational_implementation, can_print=False)
-  
+    print(f"A basis for the retrieved oil space is: \n\n{retrieved_space.rref().apply_map(lambda x: x.to_integer())}")
+    print("---------------"*5)
+    
     timings.extend(timings_wedge_attack)
     succeeded = O.rref() == retrieved_space.rref()
     
