@@ -1,7 +1,9 @@
+.ipynb_checkpoints/
 # Jetbrains project folder
 .idea/
 
 # notebook backup files
 /.ipynb_checkpoints
-
+/scratch.ipynb
+/test.sage.py
 /tutorial.ipynb
